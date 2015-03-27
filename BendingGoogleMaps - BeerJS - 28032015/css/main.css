@@ -1,0 +1,79 @@
+#map-holder {
+    position: relative;
+}
+
+.block {
+    height: 700px;
+}
+
+#map {
+    float: left;
+    width: 70%;
+}
+
+#map.full {
+    width: 100%;
+}
+
+#directions-holder {
+    width: 30%;
+    float: left;
+}
+
+#directions {
+    padding: 10px;
+}
+
+.waypoint {
+    padding: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    background: #f8df33;
+    color: black;
+    font-variant: small-caps;
+    border-radius: 10px;
+}
+
+.waypoint-link {
+    text-align: center;
+    padding: 0;
+    font-variant: small-caps;
+    font-size: 2em;
+    line-height: 1em;
+    padding-bottom: 3px;
+    color: #bbb;
+}
+
+.step:first-child {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.step:last-child {
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: none;
+}
+
+.step {
+    background: #B5CEE4;
+    padding: 10px 15px;
+    border-bottom: 2px solid #d2e4f4;
+}
+
+.meta {
+    margin: 15px 0;
+}
+
+#directions #logo {
+    margin: 15px auto;
+    display: block;
+}

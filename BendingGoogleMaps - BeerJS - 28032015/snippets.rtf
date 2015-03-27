@@ -1,0 +1,318 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fmodern\fcharset0 CourierNewPS-ItalicMT;\f1\fmodern\fcharset0 CourierNewPSMT;\f2\fmodern\fcharset0 CourierNewPS-BoldMT;
+}
+{\colortbl;\red255\green255\blue255;\red131\green129\blue131;\red1\green1\blue129;\red176\green126\blue0;
+\red191\green3\blue3;\red255\green0\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20740\viewh13240\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\i\fs20 \cf2 // markers
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  betahaus = 
+\f2\b new
+\f1\b0  google.maps.\cf3 LatLng\cf0 (\cf4 42.680282\cf0 , \cf4 23.3252689\cf0 );\
+
+\f2\b var
+\f1\b0  marker = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Marker\cf0 (\{\
+    position: betahaus,\
+    map: map\
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // symbol
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  marker = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Marker\cf0 (\{\
+    position: betahaus,\
+    icon: \{\
+        path: google.maps.SymbolPath.CIRCLE,\
+        scale: \cf4 10\cf0 \
+    \},\
+    map: map\
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // custom symbol
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  goldStar = \{\
+    path: \cf5 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z'\cf0 ,\
+    fillColor: \cf5 'yellow'\cf0 ,\
+    fillOpacity: \cf4 0.8\cf0 ,\
+    scale: \cf4 1\cf0 ,\
+    strokeColor: \cf5 'gold'\cf0 ,\
+    strokeWeight: \cf4 14\cf0 \
+\};\
+
+\f2\b var
+\f1\b0  marker = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Marker\cf0 (\{\
+    position: betahaus,\
+    icon: goldStar,\
+    map: map\
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // shape
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  triangleCoords = [\
+    
+\f2\b new
+\f1\b0  google.maps.\cf3 LatLng\cf0 (\cf4 25.774252\cf0 , -\cf4 80.190262\cf0 ),\
+    
+\f2\b new
+\f1\b0  google.maps.\cf3 LatLng\cf0 (\cf4 18.466465\cf0 , -\cf4 66.118292\cf0 ),\
+    
+\f2\b new
+\f1\b0  google.maps.\cf3 LatLng\cf0 (\cf4 32.321384\cf0 , -\cf4 64.75737\cf0 ),\
+    
+\f2\b new
+\f1\b0  google.maps.\cf3 LatLng\cf0 (\cf4 25.774252\cf0 , -\cf4 80.190262\cf0 )\
+];\
+bermudaTriangle = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Polygon\cf0 (\{\
+    paths: triangleCoords,\
+    strokeColor: \cf5 '#FF0000'\cf0 ,\
+    strokeOpacity: \cf4 0.8\cf0 ,\
+    strokeWeight: \cf4 2\cf0 ,\
+    fillColor: \cf5 '#FF0000'\cf0 ,\
+    fillOpacity: \cf4 0.35\cf0 ,\
+    map: map\
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // custom marker
+\f1\i0 \cf0 \
+CustomOverlay.
+\f2\b prototype
+\f1\b0  = 
+\f2\b new
+\f1\b0  google.maps.\cf3 OverlayView\cf0 ();\
+CustomOverlay.
+\f2\b prototype
+\f1\b0 .draw = 
+\f2\b function
+\f1\b0 () \{\
+    
+\f2\b var
+\f1\b0  self = 
+\f2\b this
+\f1\b0 ;\
+    
+\f2\b var
+\f1\b0  div = 
+\f2\b this
+\f1\b0 .div;\
+\
+    
+\f2\b if
+\f1\b0  (!div) \{\
+        div = 
+\f2\b this
+\f1\b0 .div = document.\cf3 createElement\cf0 (\cf5 'div'\cf0 );\
+\
+        
+\f0\i \cf2 // create html and append to div
+\f1\i0 \cf0 \
+\
+        
+\f2\b var
+\f1\b0  panes = 
+\f2\b this
+\f1\b0 .\cf3 getPanes\cf0 ();\
+        panes.overlayImage.\cf3 appendChild\cf0 (div);\
+    \}\
+\};\
+\
+
+\f0\i \cf2 // map
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  mapOptions = \{\
+    zoom: \cf4 15\cf0 ,\
+    center: betahaus,\
+\};\
+
+\f2\b var
+\f1\b0  map = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Map\cf0 (document.\cf3 getElementById\cf0 (\cf5 'map'\cf0 ), mapOptions);\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // map style + add to controls bar
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  mapStyleName = \cf5 'BeerJS'\cf0 ;\
+\pard\pardeftab720
+
+\f0\i \cf2 // define map style options
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  mapStyle = [\{\
+    \cf5 "featureType"\cf0 : \cf5 "landscape.man_made"\cf0 ,\
+    \cf5 "stylers"\cf0 : [\{\
+        \cf5 "color"\cf0 : \cf5 "#b5cee4"\cf0 \
+    \}]\
+\}];\
+\pard\pardeftab720
+
+\f0\i \cf2 // create map style object
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  styledMapType = 
+\f2\b new
+\f1\b0  google.maps.\cf3 StyledMapType\cf0 (mapStyle, \{\
+    name: mapStyleName\
+\});\
+\pard\pardeftab720
+
+\f0\i \cf2 // set default map style
+\f1\i0 \cf0 \
+mapOptions.mapTypeId = mapStyleName;\
+
+\f0\i \cf2 // add to map types selection control
+\f1\i0 \cf0 \
+mapOptions.mapTypeControlOptions = \{\
+    mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID, mapStyleName]\
+\};\
+\
+
+\f0\i \cf2 // directions
+\f1\i0 \cf0 \
+\
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  rendererOptions = \{\
+    panel: document.\cf3 getElementById\cf0 (\cf5 'directions'\cf0 )\
+\};\
+\
+
+\f2\b var
+\f1\b0  directionsRenderer = 
+\f2\b new
+\f1\b0  google.maps.\cf3 DirectionsRenderer\cf0 (rendererOptions);\
+
+\f2\b var
+\f1\b0  directionsService = 
+\f2\b new
+\f1\b0  google.maps.\cf3 DirectionsService\cf0 ();\
+directionsRenderer.\cf3 setMap\cf0 (map);\
+\
+
+\f2\b var
+\f1\b0  request = \{\
+    origin: hackbulgaria,\
+    destination: betahaus,\
+    travelMode: google.maps.TravelMode.DRIVING\
+\};\
+\
+directionsService.\cf3 route\cf0 (request, 
+\f2\b function
+\f1\b0 (response, status) \{\
+    
+\f2\b if
+\f1\b0  (status == google.maps.DirectionsStatus.OK) \{\
+        directionsRenderer.\cf3 setDirections\cf0 (response);\
+    \}\
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // styling map directions
+\f1\i0 \cf0 \
+\
+
+\f0\i \cf2 // hide default markers
+\f1\i0 \cf0 \
+rendererOptions.suppressMarkers = 
+\f2\b true
+\f1\b0 ;\
+
+\f0\i \cf2 // update polyline styles
+\f1\i0 \cf0 \
+rendererOptions.polylineOptions = \{\
+    strokeColor: \cf5 "black"\cf0 ,\
+    strokeWeight: \cf4 5\cf0 ,\
+    strokeOpacity: \cf4 0.5\cf0 \
+\};\
+
+\f0\i \cf2 // create custom starting point marker
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f2\b \cf0 var
+\f1\b0  startMarker = 
+\f2\b new
+\f1\b0  google.maps.\cf3 Marker\cf0 (\{\
+    position: hackbulgaria,\
+    map: map,\
+    icon: \cf5 '/img/car.png'\cf0 \
+\});\
+\
+\pard\pardeftab720
+
+\f0\i \cf2 // example directions response
+\f1\i0 \cf0 \
+\{\
+    \cf5 "status"\cf0 : \cf5 "OK"\cf0 ,\
+    \cf5 "routes"\cf0 : [\{\
+        \cf5 "summary"\cf0 : \cf5 "I-40 W"\cf0 ,\
+        \cf5 "legs"\cf0 : [\{\
+            \cf5 "steps"\cf0 : [\{\
+                \cf5 "travel_mode"\cf0 : \cf5 "DRIVING"\cf0 ,\
+                \cf5 "start_location"\cf0 : \{\
+                    \cf5 "lat"\cf0 : \cf4 41.8507300\cf0 ,\
+                    \cf5 "lng"\cf0 : -\cf4 87.6512600\cf0 \
+                \},\
+                \cf5 "end_location"\cf0 : \{\
+                    \cf5 "lat"\cf0 : \cf4 41.8525800\cf0 ,\
+                    \cf5 "lng"\cf0 : -\cf4 87.6514100\cf0 \
+                \},\
+                \cf5 "polyline"\cf0 : \{\
+                    \cf5 "points"\cf0 : \cf5 "a~l~Fjk~uOwHJy@P"\cf0 \
+                \},\
+                \cf5 "duration"\cf0 : \{\
+                    \cf5 "value"\cf0 : \cf4 19\cf0 ,\
+                    \cf5 "text"\cf0 : \cf5 "1 min"\cf0 \
+                \},\
+                \cf5 "html_instructions"\cf0 : \cf5 "Head\cf0  \cf6 \\u003c\cf5 b\cf6 \\u003e\cf5 north\cf6 \\u003c\cf5 /b\\u003e on \\u003cb\\u003eS Morgan St\\u003c/b\cf6 \\u003e\cf0  \cf5 toward\cf0  \cf6 \\u003c\cf5 b\cf6 \\u003e\cf5 W Cermak Rd\cf6 \\u003c\cf5 /b\cf6 \\u003e\cf5 "\cf0 ,\
+                \cf5 "distance"\cf0 : \{\
+                    \cf5 "value"\cf0 : \cf4 207\cf0 ,\
+                    \cf5 "text"\cf0 : \cf5 "0.1 mi"\cf0 \
+                \}\
+            \}]\
+        \}]\
+    \}]\
+\}\
+}

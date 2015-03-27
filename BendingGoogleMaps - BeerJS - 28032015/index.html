@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <div id="map-holder">
+            <div class='block full' id="map">
+                
+            </div>
+
+            <div class='block hidden' id="directions-holder">
+                <div id="directions"></div>
+            </div>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src='/js/vendor/handlebars-v3.0.0.js'></script>
+        <script src="/js/main.js"></script>
+
+        <script id="directions-template" type="text/x-handlebars-template">
+            <div class="waypoint">{{ start_address }}</div>
+            <div class="waypoint-link">to</div>
+            <div class="waypoint">{{ end_address }}</div>
+            <div class="meta">
+                <span class="distance">{{ distance.text }}</span> for <span class="duration">{{ duration.text }}</span>
+            </div>
+            <div id='steps'>
+                {{#each steps}}
+                    <div class="step">{{{ instructions }}}</div>
+                {{/each}}
+            </div>
+
+            <img src="/img/beerjs.png" id='logo'>
+        </script>
+    </body>
+</html>
