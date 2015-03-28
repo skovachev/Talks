@@ -1,10 +1,10 @@
 $(function() {
 
     var options = {
-        styleMarkers: false,
-        styleDirections: false,
-        styleMap: false,
-        showDirections: false
+        styleMarkers: true,
+        styleDirections: true,
+        styleMap: true,
+        showDirections: true
     };
 
     var betahaus = new google.maps.LatLng(42.680282, 23.325268999999935);
