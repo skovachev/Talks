@@ -1,3 +1,3 @@
 # Talks
 
-Resouces for all of my talks.
+Resources for all of my talks.
