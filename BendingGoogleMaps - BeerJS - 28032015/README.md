@@ -1,4 +1,4 @@
-# Bending Google Maps to you will
+# Bending Google Maps to your will
 
 Talk for the March 2015 BeerJS meeting. The repository contains all code examples along with the presentation itself.
 
